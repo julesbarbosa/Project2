@@ -73,3 +73,22 @@ traingbm$target <- as.factor(traingbm$target)
 gbm<-train(traingbm[,predictorNames],traingbm[,outcomeName],
            method='gbm',
            trControl=fitControl.gbm)
+gbmImp.T<-as.data.frame(gbmImp$importance)
+write.csv(gbmImp.T, "factors.csv")
+
+test$target <- as.factor(test$target)
+gbm.predict <-predict(gbm,test[,predictorNames], type="raw")
+confusionMatrix(gbm.predict, test$target, positive = "1", mode= "everything")
+library(pROC)
+gbm.probs <- predict(gbm,test[,predictorNames],type="prob")    
+
+gbm.plot<-plot(roc(test$target,gbm.probs[,2]))
+
+band<-as.numeric(gbm.probs$`1`)
+scoreband<-cut(band,10)
+barplot(prop.table(table(scoreband)))
+
+
+save(gbm, file="GBMmodel.Rdata1")
+
+
