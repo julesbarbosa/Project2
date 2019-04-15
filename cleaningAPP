@@ -1,0 +1,24 @@
+data <- read.csv("Homework/previous_applicationclean.csv", header = TRUE)
+
+colnames(data)[colnames(data)=="TARGET"] <- "target"
+data$X <- NULL
+data$SK_ID_CURR <- NULL
+data <- subset(data, data$CODE_GENDER == "F"| data$CODE_GENDER =="M")
+data$REG_CITY_NOT_LIVE_CITY <-  as.factor(data$REG_CITY_NOT_LIVE_CITY)
+data$REG_REGION_NOT_WORK_REGION <-  as.factor(data$REG_CITY_NOT_WORK_CITY)
+data$REGION_RATING_CLIENT <-  as.factor(data$REGION_RATING_CLIENT)
+data$REGION_RATING_CLIENT_W_CITY <- as.factor(data$REGION_RATING_CLIENT_W_CITY)
+data$REG_REGION_NOT_LIVE_REGION <- as.factor(data$REG_REGION_NOT_LIVE_REGION)
+data$REG_REGION_NOT_WORK_REGION <- as.factor(data$REG_REGION_NOT_WORK_REGION)
+data$LIVE_REGION_NOT_WORK_REGION <- as.factor(data$LIVE_REGION_NOT_WORK_REGION)
+data$REG_CITY_NOT_WORK_CITY <- as.factor(data$REG_CITY_NOT_WORK_CITY)
+data$LIVE_CITY_NOT_WORK_CITY <- as.factor(data$LIVE_CITY_NOT_WORK_CITY)
+data$ORGANIZATION_TYPE <- NULL
+data$FLAG_DOCUMENT_21 <- as.factor(data$FLAG_DOCUMENT_21)
+data$document <- as.factor(data$document)
+data$building <- as.factor(data$building)
+data$employed <- as.factor(data$employed)
+data$degree <- as.factor(data$degree)
+data$Women <- as.factor(data$Women)
+data$child <- as.factor(data$child)
+data$OwnGoods <- as.factor(data$OwnGoods)
