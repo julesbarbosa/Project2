@@ -212,13 +212,6 @@ data$document <- as.factor(data$document)
 data$own_car_realty <- as.factor(data$own_car_realty)
 str(data)
 
-
-
-
-
-
-
-
 set.seed(1000)
 TrainingData <- sample(1:nrow(data),0.8*nrow(data)) # row indices for training
 train <- data[TrainingData, ] #model for training
